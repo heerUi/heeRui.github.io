@@ -151,6 +151,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-粗略浏览Spring模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/21/粗略浏览Spring模块/">粗略浏览Spring模块</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/21/粗略浏览Spring模块/" class="archive-article-date">
+  	<time datetime="2017-07-21T08:15:55.741Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.Spring核心容器<br>    容器是Spring框架最核心的部分，它管理着Spring应用中bean的创建、配置和管理。在该模块中，包括了Spring bean工厂，它为Spring提供了DI的功能。基于bean工厂，我们还会发现有多种Spring应用上下文的实现，每一种都提供了配置Spring的不同方式。<br>    所有的Spring模块都构建于核心容器之上。当你配置应用的时候，已经隐式的调用了这些类。<br>2.AOP模块<br>    在这个模块中，Spring对面向切面编程提供了丰富的支持。这个模块是Spring应用系统中开发切面的基础。与DI一样，AOP可以帮助应用对象解耦。借助于AOP，可以将遍布系统的关注点（例如事务和安全）从它们所应用的对象中解耦出来。<br>3.数据访问与集成<br>    使用JDBC编写代码通常会导致大量的样板式代码，例如获得数据库连接、创建语句、处理结果集到最后关闭数据库连接。Spring的JDBC和DAO模块抽象了这些样板式代码，使我们的数据库代码变得简单明了，还可以避免因为关闭数据库资源失败而引发的问题。该模块在多种数据库服务的错误信息之上构建了一个语义丰富的异常层，以后我们不用解释那些隐晦专有的SQL错误信息了。<br>    对于那些更喜欢ORM工具而不愿直接使用JDBC的开发者，Spring提供了ORM模块。Spring的ORM模块建立在对DAO的支持之上，并为多个ORM框架提供了一种构建DAO的简便方式。Spring没有去尝试创建自己的ORM解决方案，而是对许多流行的ORM框架进行了集成，Spring的事务管理支持所有的ORM框架以及JDBC。<br>4.Web与远程调用<br>    MVC模式是一种普遍被接受的构建web应用的方法，他可以帮助用户将界面逻辑与应用逻辑分离。        Spring能够与多种优秀的MVC框架进行集成，但它的WEB和远程调用模块自带了一个强大的MVC框架，有助于提升WEB层提升应用的松耦合水平。<br>5.Instrumentation<br>    Spring的Instrumentation模块提供了为JVM添加代理的功能。具体来讲，它为Tomcat提供了一个植入代理，能够为Tomcat传递类文件，就像这些文件是被类加载期加载的一样。（使用场景非常有限）<br>6.测试<br>    鉴于自测的重要性，Spring提供了测试模块以致力于Spring应用的测试。通过该模块，你会发现Spring为使用JNDI、Servlet和Portlet编写单元测试提供了一系列的mock对象实现。对于集成测试，该模块为加载Spring应用上下文中的bean集合以及与Spring上下文中的bean进行交互提供了支持。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/21/粗略浏览Spring模块/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
