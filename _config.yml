@@ -78,7 +78,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/heeRui/heeRui.github.io
+  repo: ssh://git@github.com/heeRui/heeRui.github.io
   branch: master
 
 avatar: /uploads/images/avatar.jpg
