@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java并发 | 何睿</title>
+  <title>Java并发 | 何睿碎碎念</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、线程状态转换">
+  <meta name="description" content="一、线程状态转换   新建（New）创建后尚未启动。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发">
 <meta property="og:url" content="http://yoursite.com/2017/07/25/Java 并发/index.html">
-<meta property="og:site_name" content="何睿">
-<meta property="og:description" content="一、线程状态转换">
+<meta property="og:site_name" content="何睿碎碎念">
+<meta property="og:description" content="一、线程状态转换   新建（New）创建后尚未启动。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/pics//ace830df-9919-48ca-91b5-60b193f593d2.png">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/pics//CountdownLatch.png">
@@ -36,13 +36,13 @@
 <meta property="og:image" content="http://yoursite.com/2017/07/25/pics//051e436c-0e46-4c59-8f67-52d89d656182.png">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/pics//baaa681f-7c52-4198-a5ae-303b9386cf47.png">
 <meta property="og:image" content="http://yoursite.com/2017/07/25/pics//390c913b-5f31-444f-bbdb-2b88b688e7ce.jpg">
-<meta property="og:updated_time" content="2018-11-07T02:27:35.001Z">
+<meta property="og:updated_time" content="2018-11-07T03:03:01.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发">
-<meta name="twitter:description" content="一、线程状态转换">
+<meta name="twitter:description" content="一、线程状态转换   新建（New）创建后尚未启动。">
 <meta name="twitter:image" content="http://yoursite.com/2017/07/25/pics//ace830df-9919-48ca-91b5-60b193f593d2.png">
   
-    <link rel="alternative" href="/atom.xml" title="何睿" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="何睿碎碎念" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -196,90 +196,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 一、线程状态转换<a id="more"></a></p>
-<ul>
-<li><a href="#一线程状态转换">一、线程状态转换</a><ul>
-<li><a href="#新建new">新建（New）</a></li>
-<li><a href="#可运行runnable">可运行（Runnable）</a></li>
-<li><a href="#阻塞blocking">阻塞（Blocking）</a></li>
-<li><a href="#无限期等待waiting">无限期等待（Waiting）</a></li>
-<li><a href="#限期等待timed-waiting">限期等待（Timed Waiting）</a></li>
-<li><a href="#死亡terminated">死亡（Terminated）</a></li>
-</ul>
-</li>
-<li><a href="#二使用线程">二、使用线程</a><ul>
-<li><a href="#实现-runnable-接口">实现 Runnable 接口</a></li>
-<li><a href="#实现-callable-接口">实现 Callable 接口</a></li>
-<li><a href="#继承-thread-类">继承 Thread 类</a></li>
-<li><a href="#实现接口-vs-继承-thread">实现接口 VS 继承 Thread</a></li>
-</ul>
-</li>
-<li><a href="#三基础线程机制">三、基础线程机制</a><ul>
-<li><a href="#executor">Executor</a></li>
-<li><a href="#daemon">Daemon</a></li>
-<li><a href="#sleep">sleep()</a></li>
-<li><a href="#yield">yield()</a></li>
-</ul>
-</li>
-<li><a href="#四中断">四、中断</a><ul>
-<li><a href="#interruptedexception">InterruptedException</a></li>
-<li><a href="#interrupted">interrupted()</a></li>
-<li><a href="#executor-的中断操作">Executor 的中断操作</a></li>
-</ul>
-</li>
-<li><a href="#五互斥同步">五、互斥同步</a><ul>
-<li><a href="#synchronized">synchronized</a></li>
-<li><a href="#reentrantlock">ReentrantLock</a></li>
-<li><a href="#比较">比较</a></li>
-<li><a href="#使用选择">使用选择</a></li>
-</ul>
-</li>
-<li><a href="#六线程之间的协作">六、线程之间的协作</a><ul>
-<li><a href="#join">join()</a></li>
-<li><a href="#wait-notify-notifyall">wait() notify() notifyAll()</a></li>
-<li><a href="#await-signal-signalall">await() signal() signalAll()</a></li>
-</ul>
-</li>
-<li><a href="#七juc---aqs">七、J.U.C - AQS</a><ul>
-<li><a href="#countdownlatch">CountdownLatch</a></li>
-<li><a href="#cyclicbarrier">CyclicBarrier</a></li>
-<li><a href="#semaphore">Semaphore</a></li>
-</ul>
-</li>
-<li><a href="#八juc---其它组件">八、J.U.C - 其它组件</a><ul>
-<li><a href="#futuretask">FutureTask</a></li>
-<li><a href="#blockingqueue">BlockingQueue</a></li>
-<li><a href="#forkjoin">ForkJoin</a></li>
-</ul>
-</li>
-<li><a href="#九线程不安全示例">九、线程不安全示例</a></li>
-<li><a href="#十java-内存模型">十、Java 内存模型</a><ul>
-<li><a href="#主内存与工作内存">主内存与工作内存</a></li>
-<li><a href="#内存间交互操作">内存间交互操作</a></li>
-<li><a href="#内存模型三大特性">内存模型三大特性</a></li>
-<li><a href="#先行发生原则">先行发生原则</a></li>
-</ul>
-</li>
-<li><a href="#十一线程安全">十一、线程安全</a><ul>
-<li><a href="#不可变">不可变</a></li>
-<li><a href="#互斥同步">互斥同步</a></li>
-<li><a href="#非阻塞同步">非阻塞同步</a></li>
-<li><a href="#无同步方案">无同步方案</a></li>
-</ul>
-</li>
-<li><a href="#十二锁优化">十二、锁优化</a><ul>
-<li><a href="#自旋锁">自旋锁</a></li>
-<li><a href="#锁消除">锁消除</a></li>
-<li><a href="#锁粗化">锁粗化</a></li>
-<li><a href="#轻量级锁">轻量级锁</a></li>
-<li><a href="#偏向锁">偏向锁</a></li>
-</ul>
-</li>
-<li><a href="#十三多线程开发良好的实践">十三、多线程开发良好的实践</a></li>
-<li><a href="#参考资料">参考资料</a></li>
-</ul>
-<h1 id="一、线程状态转换"><a href="#一、线程状态转换" class="headerlink" title="一、线程状态转换"></a>一、线程状态转换</h1><p><div align="center"> <img src="../pics//ace830df-9919-48ca-91b5-60b193f593d2.png" width=""> </div><br></p>
-<h2 id="新建（New）"><a href="#新建（New）" class="headerlink" title="新建（New）"></a>新建（New）</h2><p>创建后尚未启动。</p>
+        <h1 id="一、线程状态转换"><a href="#一、线程状态转换" class="headerlink" title="一、线程状态转换"></a>一、线程状态转换</h1><p><div align="center"> <img src="../pics//ace830df-9919-48ca-91b5-60b193f593d2.png" width=""> </div><br></p>
+<h2 id="新建（New）"><a href="#新建（New）" class="headerlink" title="新建（New）"></a>新建（New）</h2><p>创建后尚未启动。<a id="more"></a></p>
 <h2 id="可运行（Runnable）"><a href="#可运行（Runnable）" class="headerlink" title="可运行（Runnable）"></a>可运行（Runnable）</h2><p>可能正在运行，也可能正在等待 CPU 时间片。</p>
 <p>包含了操作系统线程状态中的 Running 和 Ready。</p>
 <h2 id="阻塞（Blocking）"><a href="#阻塞（Blocking）" class="headerlink" title="阻塞（Blocking）"></a>阻塞（Blocking）</h2><p>等待获取一个排它锁，如果其线程释放了锁就会结束此状态。</p>
@@ -812,6 +730,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/07/28/Java IO/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaIO
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/07/22/粗略浏览Spring模块/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">粗略浏览Spring模块</div>
@@ -940,7 +867,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,7 +875,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
